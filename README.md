@@ -1,6 +1,9 @@
 # Game ECS Library for Go
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![Version](https://img.shields.io/badge/Version-Prototype-red)
+[![GoDoc](https://godoc.org/github.com/up1-io/ecs?status.svg)](https://godoc.org/github.com/up1-io/ecs)
+
+> Note: This library is currently in prototype stage. It is not recommended to use this library in production.
 
 Welcome to the Game ECS (Entity-Component-System) library for Go! This library provides a straightforward and efficient
 ECS implementation to help you simplify game development. With our ECS framework, you can manage entities, components,
