@@ -7,9 +7,9 @@ type Entity struct {
 }
 
 // GetComponent returns a component from the entity. If the component does not exist, nil is returned.
-func (e *Entity) GetComponent(name string) Component {
+func (e *Entity) GetComponent(target Component) Component {
 	for _, component := range e.components {
-		if component.Name() == name {
+		if component.Name() == target.Name() {
 			return component
 		}
 	}
