@@ -59,7 +59,7 @@ func (s MovementSystem) RequiredComponents() []string {
 
 func (s MovementSystem) Update(entities []ecs.Entity) {
 	for _, entity := range entities {
-		component := entity.GetComponent("PositionComponent")
+		component := entity.GetComponent(PositionComponent{})
 
 		if position, ok := component.(PositionComponent); ok {
 			fmt.Printf("Moving entity %d to X: %f, Y: %f\n", entity.ID, position.X, position.Y)
