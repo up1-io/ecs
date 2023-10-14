@@ -3,22 +3,22 @@ package ecs
 // App is the main struct that holds all the entities, components, and systems.
 type App struct {
 	Entities     []Entity
-	Components   map[int][]Component
+	Components   map[uint32][]Component
 	Systems      []System
-	NextEntityID int
+	NextEntityID uint32
 }
 
 func NewApp() App {
 	return App{
 		Entities:     make([]Entity, 0),
-		Components:   make(map[int][]Component),
+		Components:   make(map[uint32][]Component),
 		Systems:      make([]System, 0),
 		NextEntityID: 1,
 	}
 }
 
 // CreateEntity creates a new entity and returns its ID.
-func (w *App) CreateEntity() int {
+func (w *App) CreateEntity() uint32 {
 	entity := Entity{ID: w.NextEntityID}
 	w.Entities = append(w.Entities, entity)
 	w.NextEntityID++
@@ -26,13 +26,13 @@ func (w *App) CreateEntity() int {
 }
 
 // AddComponent attaches a component to an entity.
-func (w *App) AddComponent(entityID int, component Component) {
+func (w *App) AddComponent(entityID uint32, component Component) {
 	w.Components[entityID] = append(w.Components[entityID], component)
 	w.Entities[entityID-1].components = append(w.Entities[entityID-1].components, component)
 }
 
 // RemoveComponent removes a component from an entity.
-func (w *App) RemoveComponent(entityID int, componentName string) {
+func (w *App) RemoveComponent(entityID uint32, componentName string) {
 	components := w.Components[entityID]
 	for i, component := range components {
 		if component.Name() == componentName {
@@ -64,7 +64,7 @@ func (w *App) Update() {
 }
 
 // EntityHasComponents checks if an entity has all the required components.
-func (w *App) EntityHasComponents(entityID int, requiredComponents []string) bool {
+func (w *App) EntityHasComponents(entityID uint32, requiredComponents []string) bool {
 	components, ok := w.Components[entityID]
 	if !ok {
 		return false

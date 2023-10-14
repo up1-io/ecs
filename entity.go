@@ -2,7 +2,7 @@ package ecs
 
 // Entity represents an entity in the ECS. It is a collection of components.
 type Entity struct {
-	ID         int
+	ID         uint32
 	components []Component
 }
 
